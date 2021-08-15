@@ -74,21 +74,25 @@ impl TicTacToe {
     }
 
     fn get_winner_mark(&self) -> Mark {
+        // check rows
         for row in 0..self.board_size {
-            // check rows
             let winning_mark = self.search_cell_row_for_winner(row, 0, 0, 1);
             if winning_mark != Mark::Empty {
                 return winning_mark;
             }
+        }
 
+        //check cols
+        for col in 0..self.board_size {
+            let winning_mark = self.search_cell_row_for_winner(0, col, 1, 0);
+            if winning_mark != Mark::Empty {
+                return winning_mark;
+            }
+        }
+
+        // check diagonals
+        for row in 0..self.board_size {
             for col in 0..self.board_size {
-                // check cols
-                let winning_mark = self.search_cell_row_for_winner(0, col, 1, 0);
-                if winning_mark != Mark::Empty {
-                    return winning_mark;
-                }
-                
-                // check diagonals
                 let mut winning_mark = self.search_cell_row_for_winner(row, col, 1, 1);
                 if winning_mark != Mark::Empty {
                     return winning_mark;
