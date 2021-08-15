@@ -42,6 +42,7 @@ const setWinnerText = () => {
 const getBoardElement = () => {
   return document.querySelector('#board');
 }
+
 const cleanBoard = () => {
   getBoardElement().innerHTML = '';
 }

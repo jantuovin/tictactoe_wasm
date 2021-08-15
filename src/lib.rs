@@ -18,6 +18,7 @@ pub struct TicTacToe {
     cells: Vec<Mark>,
 }
 
+// public
 #[wasm_bindgen]
 impl TicTacToe {
     pub fn new(board_size: u8, marks_needed_for_win: u8, mark_in_turn: Mark) -> TicTacToe {
@@ -58,6 +59,7 @@ impl TicTacToe {
     }
 }
 
+// private
 impl TicTacToe {
     fn get_mark_symbol(mark: Mark) -> char {
         match mark {
@@ -72,7 +74,7 @@ impl TicTacToe {
     }
 
     fn get_winner_mark(&self) -> Mark {
-        // check row
+        // check rows
         for row in 0..self.board_size {
             let winning_mark = self.search_cell_row_for_winner(row, 0, 0, 1);
             if winning_mark != Mark::Empty {
