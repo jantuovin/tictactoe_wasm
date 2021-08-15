@@ -9,9 +9,9 @@ const handleCellClick = (row, col) => {
 }
 
 const getRowDivBase = () => {
-  let rowDiv = document.createElement("DIV");
-  rowDiv.classList.add('row');
-  return rowDiv;
+  let div = document.createElement("DIV");
+  div.classList.add('row');
+  return div;
 }
 
 const getCellButton = (cell, row, col) => {
@@ -35,8 +35,8 @@ const setTurnText = () => {
   setInfoText(`Turn: ${ticTacToe.get_turn_mark()}`);
 }
 
-const setWinnerText = () => {
-  setInfoText(`Winner is: ${ticTacToe.get_winner()}`);
+const setWinnerText = (mark) => {
+  setInfoText(`Winner is: ${mark}`);
 }
 
 const getBoardElement = () => {
@@ -67,8 +67,9 @@ const createBoard = () => {
 }
 
 const renderUI = () => {
-  if (ticTacToe.get_winner() !== ' ') {
-    setWinnerText();
+  let winnerMark = ticTacToe.get_winner();
+  if (winnerMark !== ' ') {
+    setWinnerText(winnerMark);
     cleanBoard();
   } else {
     setTurnText();
